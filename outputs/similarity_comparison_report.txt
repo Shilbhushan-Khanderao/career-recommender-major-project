@@ -1,0 +1,222 @@
+================================================================================
+SIMILARITY MODEL COMPARISON EXPERIMENT
+TF-IDF vs SBERT for Career Recommendation
+================================================================================
+
+Experiment Date: 2025-11-23 13:45:12
+Number of Test Cases: 15
+Career Database Size: 767 profiles
+
+SUMMARY STATISTICS
+--------------------------------------------------------------------------------
+Average Overlap: 32.00%
+Average TF-IDF Score: 0.4181
+Average SBERT Score: 0.5017
+Cases with <50% overlap: 13/15
+Cases where SBERT significantly better: 9/15
+
+DETAILED RESULTS BY TEST CASE
+================================================================================
+
+Test Case #1: Technical AI interest
+Query: "I love working with neural networks and deep learning algorithms"
+Expected Domain: Artificial Intelligence & Machine Learning
+
+TF-IDF Top Recommendation:
+  Predictions Technician (score: 0.6561)
+
+SBERT Top Recommendation:
+  Deep Learning Designer (score: 0.5759)
+
+Overlap: 2/5 (40.0%)
+--------------------------------------------------------------------------------
+
+Test Case #2: Healthcare service orientation
+Query: "I enjoy helping sick people and providing medical care"
+Expected Domain: Healthcare & Medical Services
+
+TF-IDF Top Recommendation:
+  Diagnosis Manager (score: 0.3328)
+
+SBERT Top Recommendation:
+  Wellness Physician (score: 0.3919)
+
+Overlap: 0/5 (0.0%)
+--------------------------------------------------------------------------------
+
+Test Case #3: Creative tech interest
+Query: "I am passionate about designing beautiful user interfaces and web experiences"
+Expected Domain: Software Development & IT
+
+TF-IDF Top Recommendation:
+  Web Analyst (score: 0.4798)
+
+SBERT Top Recommendation:
+  Ui Creator (score: 0.5071)
+
+Overlap: 0/5 (0.0%)
+--------------------------------------------------------------------------------
+
+Test Case #4: Financial analytics
+Query: "I want to analyze financial data and make investment decisions"
+Expected Domain: Finance & Banking
+
+TF-IDF Top Recommendation:
+  Financial Markets Director (score: 0.3539)
+
+SBERT Top Recommendation:
+  Investment Analyst (score: 0.4659)
+
+Overlap: 2/5 (40.0%)
+--------------------------------------------------------------------------------
+
+Test Case #5: Educational passion
+Query: "I love teaching children and helping them learn new concepts"
+Expected Domain: Education & Teaching
+
+TF-IDF Top Recommendation:
+  Senior Teacher Specialist (score: 0.4254)
+
+SBERT Top Recommendation:
+  Teaching Specialist (score: 0.3624)
+
+Overlap: 3/5 (60.0%)
+--------------------------------------------------------------------------------
+
+Test Case #6: Law enforcement interest
+Query: "I enjoy solving crimes and investigating criminal activities"
+Expected Domain: Law Enforcement & Security
+
+TF-IDF Top Recommendation:
+  Lead Javascript Engineer (score: 0.0677)
+
+SBERT Top Recommendation:
+  Cybersecurity Developer (score: 0.3839)
+
+Overlap: 0/5 (0.0%)
+--------------------------------------------------------------------------------
+
+Test Case #7: Environmental engineering
+Query: "I am interested in renewable energy and sustainable engineering solutions"
+Expected Domain: Engineering & Technology
+
+TF-IDF Top Recommendation:
+  Power Technician (score: 0.4030)
+
+SBERT Top Recommendation:
+  Renewable Energy Engineer (score: 0.5596)
+
+Overlap: 1/5 (20.0%)
+--------------------------------------------------------------------------------
+
+Test Case #8: Creative media production
+Query: "I want to create engaging content and tell stories through video"
+Expected Domain: Media & Entertainment
+
+TF-IDF Top Recommendation:
+  Documentary Creator (score: 0.3376)
+
+SBERT Top Recommendation:
+  Documentary Creator (score: 0.4015)
+
+Overlap: 1/5 (20.0%)
+--------------------------------------------------------------------------------
+
+Test Case #9: Data analytics passion
+Query: "I love working with data and discovering insights through statistical analysis"
+Expected Domain: Data Science & Analytics
+
+TF-IDF Top Recommendation:
+  Principal Insights Engineer (score: 0.4482)
+
+SBERT Top Recommendation:
+  Statistics Consultant (score: 0.5456)
+
+Overlap: 4/5 (80.0%)
+--------------------------------------------------------------------------------
+
+Test Case #10: Mobile development
+Query: "I enjoy developing mobile applications and creating innovative apps"
+Expected Domain: Software Development & IT
+
+TF-IDF Top Recommendation:
+  Senior Java Developer (score: 0.2605)
+
+SBERT Top Recommendation:
+  Mobile Developer (score: 0.5655)
+
+Overlap: 1/5 (20.0%)
+--------------------------------------------------------------------------------
+
+Test Case #11: Aerospace interest
+Query: "I am passionate about space exploration and aerospace engineering"
+Expected Domain: Engineering & Technology
+
+TF-IDF Top Recommendation:
+  Aerospace Engineer (score: 0.4338)
+
+SBERT Top Recommendation:
+  Aerospace Engineer (score: 0.5369)
+
+Overlap: 2/5 (40.0%)
+--------------------------------------------------------------------------------
+
+Test Case #12: Mental health counseling
+Query: "I want to help people overcome mental health challenges through therapy"
+Expected Domain: Healthcare & Medical Services
+
+TF-IDF Top Recommendation:
+  Mental Health Specialist (score: 0.5786)
+
+SBERT Top Recommendation:
+  Psychology Therapist (score: 0.4922)
+
+Overlap: 2/5 (40.0%)
+--------------------------------------------------------------------------------
+
+Test Case #13: Project management
+Query: "I love managing projects and coordinating teams to achieve business goals"
+Expected Domain: Business & Management
+
+TF-IDF Top Recommendation:
+  Project Management Consultant (score: 0.5020)
+
+SBERT Top Recommendation:
+  Project Management Consultant (score: 0.5078)
+
+Overlap: 2/5 (40.0%)
+--------------------------------------------------------------------------------
+
+Test Case #14: Cloud/DevOps technical
+Query: "I enjoy working with cloud infrastructure and DevOps automation"
+Expected Domain: Software Development & IT
+
+TF-IDF Top Recommendation:
+  Lead Ci/Cd Engineer (score: 0.6954)
+
+SBERT Top Recommendation:
+  Cloud Engineer (score: 0.6613)
+
+Overlap: 2/5 (40.0%)
+--------------------------------------------------------------------------------
+
+Test Case #15: Agricultural technology
+Query: "I am interested in agricultural innovation and sustainable farming techniques"
+Expected Domain: Agriculture & Natural Resources
+
+TF-IDF Top Recommendation:
+  Farm Management Operator (score: 0.2971)
+
+SBERT Top Recommendation:
+  Agricultural Supervisor (score: 0.5681)
+
+Overlap: 2/5 (40.0%)
+--------------------------------------------------------------------------------
+
+
+CONCLUSIONS
+================================================================================
+1. Both models show 32.0% average agreement
+2. SBERT provides richer semantic understanding
+3. Hybrid approach recommended for production
+4. SBERT particularly useful for complex, descriptive queries

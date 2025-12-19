@@ -1,0 +1,82 @@
+============================================================
+DOMAIN CLASSIFIER EVALUATION METRICS
+============================================================
+
+Dataset Statistics:
+  - Total Samples: 187,405
+  - Training Samples: 149,924
+  - Test Samples: 37,481
+  - Train/Test Split: 80/20
+  - Unique Domains: 48
+
+Model Configuration:
+  - Algorithm: TF-IDF + Logistic Regression
+  - TF-IDF max_features: 3000
+  - TF-IDF ngram_range: (1, 2)
+  - Logistic Regression max_iter: 500
+  - Solver: lbfgs (multinomial)
+
+Performance Metrics:
+  - Accuracy: 99.30%
+  - Macro Avg Precision: 0.9930
+  - Macro Avg Recall: 0.9927
+  - Macro Avg F1-Score: 0.9928
+
+============================================================
+Full Classification Report:
+============================================================
+
+                              precision    recall  f1-score   support
+
+          academic_education       0.99      1.00      1.00       820
+            accounting_audit       1.00      1.00      1.00       790
+        aerospace_automotive       0.95      0.99      0.97       806
+         agriculture_farming       1.00      1.00      1.00       798
+               allied_health       1.00      0.99      1.00       749
+        alternative_wellness       1.00      1.00      1.00       746
+           automotive_repair       0.99      0.95      0.97       751
+          chemical_materials       0.98      0.99      0.99       751
+          civil_construction       0.99      0.99      0.99       761
+                cloud_devops       0.99      0.99      0.99       827
+         construction_trades       1.00      0.99      1.00       805
+         consulting_strategy       1.00      0.99      0.99       755
+        corporate_management       0.99      1.00      0.99       793
+          corporate_training       1.00      0.99      1.00       716
+            cybersecurity_it       0.98      1.00      0.99       795
+             data_science_ai       1.00      1.00      1.00       822
+          design_visual_arts       0.99      1.00      1.00       839
+      educational_technology       1.00      1.00      1.00       762
+  electrical_electronics_eng       1.00      0.99      0.99       726
+            entrepreneurship       1.00      1.00      1.00       768
+environmental_sustainability       1.00      0.99      1.00       778
+       film_video_production       0.98      0.99      0.99       811
+          finance_investment       1.00      1.00      1.00       800
+               food_beverage       0.99      1.00      1.00       841
+                   gaming_xr       1.00      1.00      1.00       846
+        hardware_electronics       0.99      1.00      0.99       818
+         hospitality_tourism       1.00      0.99      1.00       782
+              legal_services       1.00      1.00      1.00       824
+               life_sciences       0.99      0.98      0.98       728
+    manufacturing_production       0.98      0.95      0.97       686
+       mechanical_industrial       0.94      0.96      0.95       734
+            medical_clinical       1.00      1.00      1.00       818
+       mental_health_therapy       0.99      1.00      0.99       764
+                 music_audio       1.00      1.00      1.00       811
+   nonprofit_social_services       1.00      1.00      1.00       774
+             performing_arts       1.00      1.00      1.00       819
+           personal_services       1.00      1.00      1.00       809
+      pharmaceutical_biotech       0.98      1.00      0.99       735
+           physical_sciences       0.99      0.98      0.99       764
+               public_health       1.00      1.00      1.00       740
+    public_policy_government       1.00      1.00      1.00       763
+            retail_ecommerce       0.99      0.99      0.99       781
+          sales_business_dev       0.99      1.00      0.99       791
+             social_sciences       1.00      0.99      0.99       715
+        software_development       1.00      1.00      1.00       831
+          telecommunications       1.00      0.99      1.00       777
+    transportation_logistics       1.00      0.99      0.99       769
+          writing_publishing       0.99      1.00      1.00       792
+
+                    accuracy                           0.99     37481
+                   macro avg       0.99      0.99      0.99     37481
+                weighted avg       0.99      0.99      0.99     37481

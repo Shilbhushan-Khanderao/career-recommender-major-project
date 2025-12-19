@@ -1,0 +1,16 @@
+test_case,query,description,expected_domain,tfidf_top1,tfidf_score,sbert_top1,sbert_score,overlap_count,overlap_percentage
+1,I love working with neural networks and deep learning algorithms,Technical AI interest,Artificial Intelligence & Machine Learning,Predictions Technician,0.6560769415605124,Deep Learning Designer,0.5759363174438477,2,40.0
+2,I enjoy helping sick people and providing medical care,Healthcare service orientation,Healthcare & Medical Services,Diagnosis Manager,0.33276700296454004,Wellness Physician,0.39192071557044983,0,0.0
+3,I am passionate about designing beautiful user interfaces and web experiences,Creative tech interest,Software Development & IT,Web Analyst,0.4797517231689766,Ui Creator,0.5070636868476868,0,0.0
+4,I want to analyze financial data and make investment decisions,Financial analytics,Finance & Banking,Financial Markets Director,0.35387280678010435,Investment Analyst,0.4658578634262085,2,40.0
+5,I love teaching children and helping them learn new concepts,Educational passion,Education & Teaching,Senior Teacher Specialist,0.425440827670526,Teaching Specialist,0.3623993992805481,3,60.0
+6,I enjoy solving crimes and investigating criminal activities,Law enforcement interest,Law Enforcement & Security,Lead Javascript Engineer,0.06766655752806021,Cybersecurity Developer,0.3839282691478729,0,0.0
+7,I am interested in renewable energy and sustainable engineering solutions,Environmental engineering,Engineering & Technology,Power Technician,0.4030274771585038,Renewable Energy Engineer,0.5595554113388062,1,20.0
+8,I want to create engaging content and tell stories through video,Creative media production,Media & Entertainment,Documentary Creator,0.3376376346660703,Documentary Creator,0.4015418291091919,1,20.0
+9,I love working with data and discovering insights through statistical analysis,Data analytics passion,Data Science & Analytics,Principal Insights Engineer,0.4482390396560889,Statistics Consultant,0.5456265807151794,4,80.0
+10,I enjoy developing mobile applications and creating innovative apps,Mobile development,Software Development & IT,Senior Java Developer,0.2605154583913903,Mobile Developer,0.5655262470245361,1,20.0
+11,I am passionate about space exploration and aerospace engineering,Aerospace interest,Engineering & Technology,Aerospace Engineer,0.4338461635573676,Aerospace Engineer,0.5368581414222717,2,40.0
+12,I want to help people overcome mental health challenges through therapy,Mental health counseling,Healthcare & Medical Services,Mental Health Specialist,0.5786182047804521,Psychology Therapist,0.4921901226043701,2,40.0
+13,I love managing projects and coordinating teams to achieve business goals,Project management,Business & Management,Project Management Consultant,0.5019829183423046,Project Management Consultant,0.5078465938568115,2,40.0
+14,I enjoy working with cloud infrastructure and DevOps automation,Cloud/DevOps technical,Software Development & IT,Lead Ci/Cd Engineer,0.6953787989276757,Cloud Engineer,0.6612869501113892,2,40.0
+15,I am interested in agricultural innovation and sustainable farming techniques,Agricultural technology,Agriculture & Natural Resources,Farm Management Operator,0.2971434691191116,Agricultural Supervisor,0.5681449174880981,2,40.0
