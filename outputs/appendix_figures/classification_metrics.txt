@@ -2,6 +2,8 @@
 DOMAIN CLASSIFIER EVALUATION METRICS
 ============================================================
 
+Generated: 2026-08-01 12:39:42
+
 Dataset Statistics:
   - Total Samples: 187,405
   - Training Samples: 149,924
@@ -40,7 +42,7 @@ Full Classification Report:
                 cloud_devops       0.99      0.99      0.99       827
          construction_trades       1.00      0.99      1.00       805
          consulting_strategy       1.00      0.99      0.99       755
-        corporate_management       0.99      1.00      0.99       793
+        corporate_management       0.98      1.00      0.99       793
           corporate_training       1.00      0.99      1.00       716
             cybersecurity_it       0.98      1.00      0.99       795
              data_science_ai       1.00      1.00      1.00       822
@@ -49,14 +51,14 @@ Full Classification Report:
   electrical_electronics_eng       1.00      0.99      0.99       726
             entrepreneurship       1.00      1.00      1.00       768
 environmental_sustainability       1.00      0.99      1.00       778
-       film_video_production       0.98      0.99      0.99       811
+       film_video_production       0.99      0.99      0.99       811
           finance_investment       1.00      1.00      1.00       800
                food_beverage       0.99      1.00      1.00       841
                    gaming_xr       1.00      1.00      1.00       846
         hardware_electronics       0.99      1.00      0.99       818
          hospitality_tourism       1.00      0.99      1.00       782
               legal_services       1.00      1.00      1.00       824
-               life_sciences       0.99      0.98      0.98       728
+               life_sciences       0.99      0.98      0.99       728
     manufacturing_production       0.98      0.95      0.97       686
        mechanical_industrial       0.94      0.96      0.95       734
             medical_clinical       1.00      1.00      1.00       818
@@ -80,3 +82,4 @@ environmental_sustainability       1.00      0.99      1.00       778
                     accuracy                           0.99     37481
                    macro avg       0.99      0.99      0.99     37481
                 weighted avg       0.99      0.99      0.99     37481
+
