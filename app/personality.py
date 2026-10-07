@@ -14,25 +14,38 @@ PERSONALITY_KEYWORDS = {
         "creative", "curious", "imaginative", "innovative", "artistic",
         "explore", "ideas", "abstract", "experiment", "novel",
         "unconventional", "variety", "adventure", "learn", "discover",
-        "design", "art", "music", "culture", "philosophy"
+        "design", "art", "music", "culture", "philosophy",
+        # activity cues: what interest statements actually contain
+        "research", "invent", "innovate", "model", "write", "compose",
+        "create", "build", "program", "code", "learn", "science", "study"
     ],
     "conscientiousness": [
         "organized", "disciplined", "responsible", "careful", "thorough",
         "plan", "detail", "precise", "accurate", "systematic",
         "efficient", "reliable", "structured", "methodical", "goal",
-        "achievement", "diligent", "focused", "dedicated", "persistent"
+        "achievement", "diligent", "focused", "dedicated", "persistent",
+        # activity cues
+        "analyse", "analyze", "analysis", "analytical", "audit", "test",
+        "debug", "measure", "organise", "organize", "manage", "schedule",
+        "calculate", "verify", "document", "data", "statistics", "optimise", "optimize"
     ],
     "extraversion": [
         "outgoing", "social", "energetic", "enthusiastic", "talkative",
         "people", "team", "interact", "communicate", "present",
         "leadership", "assertive", "active", "networking", "collaborative",
-        "groups", "meetings", "public", "speaking", "events"
+        "groups", "meetings", "public", "speaking", "events",
+        # activity cues
+        "teach", "sell", "negotiate", "lead", "present", "market",
+        "host", "perform", "persuade", "promote", "coordinate", "network"
     ],
     "agreeableness": [
         "helpful", "caring", "kind", "supportive", "cooperative",
         "empathy", "compassion", "understanding", "patient", "friendly",
         "trust", "altruistic", "considerate", "generous", "warm",
-        "help", "support", "assist", "service", "community"
+        "help", "support", "assist", "service", "community",
+        # activity cues
+        "care", "mentor", "counsel", "heal", "serve", "volunteer",
+        "teach", "nurse", "treat", "advise", "protect"
     ],
     "neuroticism": [
         "stress", "anxiety", "worry", "pressure", "nervous",
@@ -54,15 +67,27 @@ def personality_scores_from_text(tokens: List[str]) -> Dict[str, int]:
     """
     scores = {trait: 0 for trait in PERSONALITY_KEYWORDS.keys()}
     
-    # Convert tokens to set for faster lookup
-    token_set = set(tokens)
-    
-    # Count matches for each trait
-    for trait, keywords in PERSONALITY_KEYWORDS.items():
-        for keyword in keywords:
-            if keyword in token_set:
+    # Tokens are not lemmatized upstream, so each token is also tested in a few
+    # simple inflected-form variants (analysing -> analyse/analyze, models -> model).
+    def variants(tok: str) -> set:
+        out = {tok}
+        for suffix in ("ing", "ed", "es", "s", "er", "ers"):
+            if tok.endswith(suffix) and len(tok) - len(suffix) >= 3:
+                stem = tok[: -len(suffix)]
+                out.update({stem, stem + "e"})
+                if len(stem) > 3 and stem[-1] == stem[-2]:   # running -> run
+                    out.add(stem[:-1])
+        if tok.endswith("ysing"):                            # analysing -> analyze
+            out.add(tok[:-5] + "yze")
+        return out
+
+    # Each distinct token adds at most 1 to a trait, however many variants match
+    for tok in set(tokens):
+        forms = variants(tok)
+        for trait, keywords in PERSONALITY_KEYWORDS.items():
+            if forms & set(keywords):
                 scores[trait] += 1
-    
+
     return scores
 
 

@@ -32,12 +32,14 @@ def main():
     print(f"Input : {a.text}\nDomain: {domain}   Engine: {a.engine}\n")
 
     recs = recommend_careers_for_domain(a.text, domain, top_k=a.top, similarity_model=a.engine)
-    hdr = f"{'Career':34s}{'Semantic':>9s}{'Keyword':>9s}{'Personal.':>10s}{'Skills':>8s}{'Final':>8s}"
+    hdr = f"{'Career':34s}{'Semantic':>9s}{'Keyword':>9s}{'Personal.':>10s}{'Skills':>8s}{'Hybrid':>8s}{'RuleBoost':>10s}{'Final':>8s}"
     print(hdr + "\n" + "-" * len(hdr))
     for r in recs:
         print(f"{r['career']:34s}{r['similarity_score']:9.3f}{r['keyword_score']:9.3f}"
-              f"{r['personality_score']:10.3f}{r['skills_score']:8.3f}{r['hybrid_score']:8.3f}")
-    print("\nFinal = 0.40*Semantic + 0.25*Keyword + 0.20*Personality + 0.15*Skills")
+              f"{r['personality_score']:10.3f}{r['skills_score']:8.3f}{r['hybrid_score']:8.3f}"
+              f"{r['rule_boost']:10.3f}{r['final_score']:8.3f}")
+    print("\nHybrid = 0.40*Semantic + 0.25*Keyword + 0.20*Personality + 0.15*Skills  (Equation 4.1)")
+    print("Final  = Hybrid + rule-based domain boost (constant for the predicted domain; ranking is by Hybrid)")
 
 
 if __name__ == "__main__":

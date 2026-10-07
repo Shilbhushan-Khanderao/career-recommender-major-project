@@ -18,6 +18,11 @@ from .personality import personality_scores_from_text, compute_personality_match
 _sbert_embedder = None
 _career_embedding_cache = {}
 
+# Rule-based domain logic: every candidate returned for the classifier-predicted
+# domain receives this fixed boost. It is shown in the score breakdown but does
+# not enter the Equation 4.1 hybrid score, so rankings are unaffected.
+RULE_BASED_DOMAIN_BOOST = 0.20
+
 
 def _get_sbert_embedder():
     """Lazy load SBERT embedder."""
@@ -178,6 +183,8 @@ def recommend_careers_for_domain(
             'personality_score': round(personality_score, 3),
             'skills_score': round(skills_score, 3),
             'hybrid_score': round(hybrid_score, 3),
+            'rule_boost': RULE_BASED_DOMAIN_BOOST,
+            'final_score': round(hybrid_score + RULE_BASED_DOMAIN_BOOST, 3),
             'description': career_row['description'],
             'skills': career_row['skills'],
             'personality': career_row['personality']
