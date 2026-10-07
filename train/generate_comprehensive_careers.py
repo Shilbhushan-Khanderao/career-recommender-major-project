@@ -156,17 +156,54 @@ def generate_skills(domain_id, career_name):
     
     return ",".join(selected_skills)
 
-def generate_personality(domain_id):
-    """Generate personality traits based on domain category"""
+# Role-level personality profiles. The job title (e.g. Manager vs Technician vs
+# Designer) determines the leading traits, so careers inside one domain no
+# longer share an identical personality requirement.
+ROLE_PERSONALITY = [
+    (("manager", "director", "executive", "supervisor", "foreman", "coordinator"),
+     ["high_extraversion", "high_conscientiousness"]),
+    (("representative", "agent"),
+     ["high_agreeableness", "high_extraversion"]),
+    (("physician", "nurse", "therapist", "practitioner", "assistant"),
+     ["high_agreeableness", "high_conscientiousness"]),
+    (("designer", "artist", "creator", "producer"),
+     ["high_openness", "moderate_extraversion"]),
+    (("analyst", "consultant", "specialist", "associate"),
+     ["high_openness", "high_conscientiousness"]),
+    (("master", "licensed", "journey-level", "technician", "mechanic",
+      "operator", "installer"),
+     ["high_conscientiousness", "low_neuroticism"]),
+    (("engineer", "developer", "architect", "administrator"),
+     ["high_conscientiousness", "moderate_openness"]),
+]
+
+
+def role_personality(domain_id, career_name):
+    """Deterministic personality tags: role-specific traits first, then the
+    domain-category trait that is not already covered."""
     category = DOMAIN_CATEGORIES.get(domain_id, "business")
-    base_personality = CAREER_TEMPLATES[category]["personality"]
-    
-    # Add some variation
-    variations = ["low_neuroticism", "moderate_agreeableness", "moderate_extraversion", 
-                 "moderate_conscientiousness", "moderate_openness"]
-    
-    personality_traits = base_personality[:2] + [random.choice(variations)]
-    return ",".join(personality_traits[:2])  # Return 2 traits
+    base = CAREER_TEMPLATES[category]["personality"]
+    words = career_name.lower().replace("-", " ").split()
+    role_tags = None
+    for keys, tags in ROLE_PERSONALITY:
+        if any(k.replace("-", " ") in words or k in career_name.lower() for k in keys):
+            role_tags = list(tags)
+            break
+    if role_tags is None:
+        return ",".join(base[:2])
+    used = {t.split("_", 1)[1] for t in role_tags}
+    extra = next((t for t in base if t.split("_", 1)[1] not in used), None)
+    if extra:
+        role_tags.append(extra)
+    return ",".join(role_tags)
+
+
+def generate_personality(domain_id, career_name=""):
+    """Generate personality tags for a career (role-aware when a name is given)."""
+    if career_name:
+        return role_personality(domain_id, career_name)
+    category = DOMAIN_CATEGORIES.get(domain_id, "business")
+    return ",".join(CAREER_TEMPLATES[category]["personality"][:2])
 
 def generate_keywords(domain_id, career_name):
     """Generate keywords from domain and career name"""
@@ -212,7 +249,7 @@ def generate_all_careers():
                 "career": career_name,
                 "domain": domain_id,
                 "skills": generate_skills(domain_id, career_name),
-                "personality": generate_personality(domain_id),
+                "personality": generate_personality(domain_id, career_name),
                 "keywords": generate_keywords(domain_id, career_name),
                 "description": generate_description(domain_id, career_name)
             }

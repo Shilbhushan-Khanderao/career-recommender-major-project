@@ -16,6 +16,7 @@ from .personality import personality_scores_from_text, compute_personality_match
 
 # Lazy import for SBERT to avoid loading unless needed
 _sbert_embedder = None
+_career_embedding_cache = {}
 
 
 def _get_sbert_embedder():
@@ -41,7 +42,14 @@ def compute_sbert_similarity_scores(user_text: str, career_texts: List[str]) -> 
     embedder = _get_sbert_embedder()
     # Encode user text and career texts to embeddings
     user_embedding = embedder.encode_sentences([user_text])[0]
-    career_embeddings = embedder.encode_sentences(career_texts)
+    # Career embeddings are computed once per distinct text list and cached
+    # (as described in the dissertation); only the user's text is encoded
+    # on every request.
+    cache_key = tuple(career_texts)
+    career_embeddings = _career_embedding_cache.get(cache_key)
+    if career_embeddings is None:
+        career_embeddings = embedder.encode_sentences(career_texts)
+        _career_embedding_cache[cache_key] = career_embeddings
     # Compute similarity scores
     scores = embedder.batch_similarity_scores(user_embedding, career_embeddings)
     return scores.tolist()
